@@ -1,15 +1,16 @@
-import java.util.Objects;
+import sun.awt.X11.XSystemTrayPeer;
+
 import java.util.Scanner;
 
 public class InputAndSort {
-    static int binSearch(Comparable[] array, Integer target, Integer begin, Integer end) {
+    static int binSearch(Comparable<Integer>[] array, Integer target, Integer begin, Integer end) {
         if (begin.compareTo(end) == 0) {
             return -1;
         }
         int mid = begin + (end - begin) / 2;
-        if (array[mid].compareTo(end) == 0) {
+        if (array[mid].compareTo(target) == 0) {
             return mid;
-        } else if (array[mid].compareTo(end) < 0) {
+        } else if (array[mid].compareTo(target) < 0) {
             return binSearch(array, target, mid + 1, end);
         } else {
             return binSearch(array, target, begin, mid);
@@ -49,6 +50,7 @@ public class InputAndSort {
         for (int j : nums) {
             System.out.printf("%4d", j);
         }
+        System.out.println();
 
         System.out.println("请输入需要查找的数字：");
         Integer n = input.nextInt();
